@@ -1,0 +1,1 @@
+update_pkgver=$(curl -m 10 -s https://www.archlinux.org/packages/community/x86_64/deepin-anything-module/ | grep "<h2.*deepin-anything-module" | sed -e 's/.* \([0-9\.]\+\)-.*/\1/g')
