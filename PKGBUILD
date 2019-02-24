@@ -1,11 +1,11 @@
 _pkgname="deepin-anything"
 pkgname=deepin-anything-module-bede-lts
-pkgver=0.0.3
+pkgver=0.0.4
 pkgdesc="Kernel module for deepin-anything (linux-bede-lts)"
 _extramodules=4.19-BEDE-LTS-external
 _current_linux_version=4.19.25
 _next_linux_version=4.20
-pkgrel=14
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/linuxdeepin/deepin-anything"
 license=('GPL3')
@@ -22,7 +22,7 @@ depends=(
 provides=('DEEPIN-ANYTHING-MODULE')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/linuxdeepin/deepin-anything/archive/$pkgver.tar.gz"
         linux-4.20.patch)
-sha512sums=('8a506ba57d6a2ac9c9089719d18013fbde6443cb4f63de79498269e728b7e8725b4e06e7029ae2d2242aaac955c63e56c680fdd18e3fb0d72e9953a9fc5e8402'
+sha512sums=('fcb7683ce3bef818ac06dd62f14b5624669f9c09b53c5f08e319b724f5408bc221154428a6436d9e2a68aa6444e966c494c8a7611dfed0c93b6b9e71a3da0f55'
             'dc3c85e9535cc589fdf56d265c4330519c92b5bcc406153e3162ba6ef5e799b702c394e1961132770f4f3ddd288dbbfe74a9d8056329e4585eb5a2094ffe0155')
 
 prepare() {
