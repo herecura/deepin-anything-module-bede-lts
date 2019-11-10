@@ -5,7 +5,7 @@ pkgdesc="Kernel module for deepin-anything (linux-bede-lts)"
 _extramodules=4.19-BEDE-LTS-external
 _current_linux_version=4.19.83
 _next_linux_version=4.20
-pkgrel=38
+pkgrel=39
 arch=('x86_64')
 url="https://github.com/linuxdeepin/deepin-anything"
 license=('GPL3')
@@ -28,16 +28,14 @@ sha512sums=('f79b4db917cce2611bd6964d00ae0e162fc500fa7ca76a987145456a9ee81296c77
 #}
 
 build() {
-    _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
-
     cd $_pkgname-$pkgver
-    make -C kernelmod kdir=/usr/lib/modules/$_kernver/build
+    make -C kernelmod kdir=/usr/src/linux-bede-lts
 }
 
 package() {
     cd $_pkgname-$pkgver/kernelmod
-    install -dm 755 "$pkgdir"/usr/lib/modules/$_extramodules/deepin
-    install -m 644 vfs_monitor.ko "$pkgdir"/usr/lib/modules/$_extramodules/deepin/
+    local extradir="/usr/lib/modules/$(</usr/src/linux-bede-lts/version)/extramodules"
+    install -Dm644 vfs_monitor.ko "${pkgdir}${extradir}/$pkgname/vfs_monitor.ko"
     find "${pkgdir}" -name '*.ko' -exec xz {} +
 }
 
